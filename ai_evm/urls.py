@@ -10,24 +10,23 @@ Class-based views
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
-    1. Import to include() function: from django.urls import include, path
+    1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
 from django.urls import path
-from .views import start, dbg, biometric_login
+from views import start, dbg
 from detect_face.views import detect_face
 from detect_person.views import detect_person
 from detect_mask.views import detect_mask
 from recognize_face.views import recognize_face
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', start, name='start'),
-    path('dbg/', dbg, name='dbg'),
-    path('detect_face/', detect_face, name='detect_face'),
-    path('detect_person/', detect_person, name='detect_person'),
-    path('detect_mask/', detect_mask, name='detect_mask'),
-    path('recognize_face', recognize_face, name='recognize_face'),
-    path('', biometric_login, name='biometric_login')
+    path('', start, name = 'start'),
+    path('dbg/', dbg, name = 'dbg'),
+    path('detect_face/', detect_face, name = 'detect_face'),
+    path('detect_person/', detect_person, name = 'detect_person'),
+    path('detect_mask/', detect_mask, name = 'detect_mask'),
+    path('recognize_face', recognize_face, name = 'recognize_face')
 ]
-
